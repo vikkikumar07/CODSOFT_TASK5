@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class Student {
     String name;
     int id;
-    ArrayList<course> registeredCourses;
+    ArrayList<Course> registeredCourses;
 
-    public void Student(String name, int id) {
+    public Student(String name, int id) {
         this.name = name;
         this.id = id;
         registeredCourses =new ArrayList<>();
