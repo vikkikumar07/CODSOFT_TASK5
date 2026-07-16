@@ -169,7 +169,7 @@ public class CourseRegistrationSystem {
             System.out.println("Student not Found !");
             return;
         }
-
+        System.out.println("Student Name: "+ student.name);
         System.out.println("\n Registered Course:");
         if(student.registeredCourses.isEmpty()) {
             System.out.println("No Course Registered.");
