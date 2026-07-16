@@ -127,6 +127,32 @@ public class CourseRegistrationSystem {
 
     // remove course function
     static void removeCourse() {
+        System.out.print("Enter Student ID : ");
+        int id = sc.nextInt();
+
+        Student student = findStudent(id);
+
+        if(student == null) {
+            System.out.println("Student not Found !");
+            return;
+        }
+
+        System.out.print("Enter Course Code : ");
+        String code =sc.nextLine();
+
+        Course course = findCourse(code);
+        if(course == null) {
+            System.out.println("Course Not Found!");
+            return;
+        }
+
+        if(student.registeredCourses.remove(course)) {
+            course.enrolled --;
+            System.out.println("Course Remove Successful!");
+
+        }else {
+            System.out.println("Student is registered in this course.");
+        }
         
     }
 
