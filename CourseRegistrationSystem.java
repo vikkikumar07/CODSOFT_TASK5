@@ -158,7 +158,25 @@ public class CourseRegistrationSystem {
 
     // view registered Course function
     static void viewRegisteredCourse() {
+        System.out.print("Enter Student ID : ");
+        int id = sc.nextInt();
 
+        Student student = findStudent(id);
+
+        if(student == null) {
+            System.out.println("Student not Found !");
+            return;
+        }
+
+        System.out.println("\n Registered Course:");
+        if(student.registeredCourses.isEmpty()) {
+            System.out.println("No Course Registered.");
+            return;
+        }
+
+        for(Course c: student.registeredCourses) {
+            System.out.println(c.code + "_"+ c.title);
+        }
     }
     
 }
