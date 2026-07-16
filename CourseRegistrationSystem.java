@@ -18,6 +18,11 @@ public class CourseRegistrationSystem {
         courses.add(new Course("W003", "Web Development", "HTML, CSS, JavaScript", 10));
         courses.add(new Course("A006", "App Development", "java, Kotiln", 10));
 
+        // store student name
+        students.add(new Student("vikki Kumar", 1));
+        students.add(new Student("Ankit Kumar", 2));
+        students.add(new Student("Rupesh Arya", 3));
+
         boolean exit = true;
         while(exit) {
             System.out.println("\n ===== Student Course Registration System =====");
@@ -54,6 +59,26 @@ public class CourseRegistrationSystem {
         }
     }
 
+    // find student function
+    static Student findStudent(int id) {
+        for(Student s: students) {
+            if(s.id == id) {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    // find course function
+    static Course findCourse(String code) {
+        for(Course c: courses) {
+            if(c.code == code) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     // view course function
     static void viewCourse() {
         System.out.println("\nAvailable Courses");
@@ -68,7 +93,36 @@ public class CourseRegistrationSystem {
 
     // register course function
     static void registerCourse() {
+        System.out.print("Enter Student ID : ");
+        int id = sc.nextInt();
 
+        Student student = findStudent(id);
+
+        if(student == null) {
+            System.out.println("Student not Found !");
+            return;
+        }
+        System.out.print("Enter Course Code : ");
+        String code =sc.nextLine();
+
+        Course course = findCourse(code);
+        if(course == null) {
+            System.out.println("Course Not Found!");
+            return;
+        }
+        if(course.getAvailableSlots() == 0) {
+            System.out.println("No Slots Available!");
+            return;
+        }
+        
+        if(student.registeredCourses.contains(course)) {
+            System.out.println("Already Registered!");
+            return;
+        }
+
+        student.registeredCourses.add(course);
+        course.enrolled ++;
+        System.out.println("Registration Successful!");
     }
 
     // remove course function
