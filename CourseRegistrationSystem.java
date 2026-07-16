@@ -72,7 +72,7 @@ public class CourseRegistrationSystem {
     // find course function
     static Course findCourse(String code) {
         for(Course c: courses) {
-            if(c.code == code) {
+            if(c.code.toLowerCase().equals(code)) {
                 return c;
             }
         }
@@ -95,6 +95,7 @@ public class CourseRegistrationSystem {
     static void registerCourse() {
         System.out.print("Enter Student ID : ");
         int id = sc.nextInt();
+        sc.nextLine();
 
         Student student = findStudent(id);
 
@@ -103,7 +104,7 @@ public class CourseRegistrationSystem {
             return;
         }
         System.out.print("Enter Course Code : ");
-        String code =sc.nextLine();
+        String code =sc.nextLine().toLowerCase();
 
         Course course = findCourse(code);
         if(course == null) {
@@ -129,6 +130,7 @@ public class CourseRegistrationSystem {
     static void removeCourse() {
         System.out.print("Enter Student ID : ");
         int id = sc.nextInt();
+        sc.nextLine();
 
         Student student = findStudent(id);
 
@@ -138,7 +140,7 @@ public class CourseRegistrationSystem {
         }
 
         System.out.print("Enter Course Code : ");
-        String code =sc.nextLine();
+        String code =sc.nextLine().toLowerCase();
 
         Course course = findCourse(code);
         if(course == null) {
